@@ -1,0 +1,19 @@
+<section>
+    <app-table
+        [data]="products"
+        [allowDelete]="true"
+        [allowEdit]="true"
+        [selectable]="true"
+        [config]="tableConfig"
+        [editableRows]="true"
+        [deletableRows]="true"
+        [allowAdd]="true"
+        [allowDelete]="true"
+        [allowEdit]="true"
+        [entity]="ProductType"
+        [totalRecords]="products.length"
+        [multiSelect]="true"
+        (saved)="create($event)"
+        (deleted)="delete($event)"
+    ></app-table>
+</section>

@@ -1,0 +1,47 @@
+<ng-template #productGridTemplate let-item="$implicit">
+    <article class="product">
+        <header>
+            <p><i class="pi pi-tag"></i>{{item.category}}
+                <br>{{item.inventoryStatus}}</p>
+            </header>
+            <div>
+                <p>{{item.name}}
+                    <br>{{item.description}}
+                    <br><p-rating [(ngModel)]="item.rating" [readonly]="true" [cancel]="false"></p-rating></p>
+                </div>
+                <div>
+                    <span>${{item.price}}</span>
+                    <button pButton pRipple
+                    icon="pi pi-shopping-cart">
+                </button>
+            </div>
+        </article>
+    </ng-template>
+    <ng-template #productListTemplate let-item="$implicit">
+        <p class="product-row">
+            <span><i class="pi pi-tag"></i>{{item.category}}</span>
+            <span>{{item.inventoryStatus}}</span>
+            <span>{{item.name}}</span>
+            <span>{{item.description}}</span>
+            <p-rating [(ngModel)]="item.rating" [readonly]="true" [cancel]="false"></p-rating>
+            <span>${{item.price}}</span>
+            <button pButton pRipple
+            icon="pi pi-shopping-cart">
+        </button>
+    </p>
+</ng-template>
+<section>
+    <app-list
+    [items]="products"
+    [pagination]="true"
+    [totalRecords]="products.length"
+    [enableAdd]="false"
+    [enableDateRange]="false"
+    [selectable]="false"
+    [gridItemTemplate]="productGridTemplate"
+    [listItemTemplate]="productListTemplate"
+    [listKey]="'name'"
+    [sortKey]="'name'"
+    [sortOptions]="sortOptions"
+    ></app-list>
+</section>
